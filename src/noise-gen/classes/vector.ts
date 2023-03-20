@@ -74,13 +74,10 @@ export class Vector2 {
   add(x: number, y: number): void
   add(secondVector: Vector2): void
   add(vectorOrX: Vector2 | number, y?: number) {
-    Vector2.isVector(vectorOrX)
-      ? this.#addVector(vectorOrX as Vector2)
-      : this.#addValues(vectorOrX as number, y)
-  }
-  #addVector(secondVector: Vector2) {
-    this.#x += secondVector.x
-    this.#y += secondVector.y
+    if (Vector2.isVector(vectorOrX))
+      return this.#addValues((vectorOrX as Vector2).x, (vectorOrX as Vector2).y)
+
+    this.#addValues(vectorOrX as number, y)
   }
   #addValues(x: number, y: number) {
     this.#x += x
@@ -92,13 +89,13 @@ export class Vector2 {
   subtract(x: number, y: number): void
   subtract(secondVector: Vector2): void
   subtract(vectorOrX: Vector2 | number, y?: number) {
-    Vector2.isVector(vectorOrX)
-      ? this.#subtractVector(vectorOrX as Vector2)
-      : this.#subtractValues(vectorOrX as number, y)
-  }
-  #subtractVector(secondVector: Vector2) {
-    this.#x -= secondVector.x
-    this.#y -= secondVector.y
+    if (Vector2.isVector(vectorOrX))
+      return this.#subtractValues(
+        (vectorOrX as Vector2).x,
+        (vectorOrX as Vector2).y
+      )
+
+    this.#subtractValues(vectorOrX as number, y)
   }
   #subtractValues(x: number, y: number) {
     this.#x -= x
@@ -109,19 +106,14 @@ export class Vector2 {
   //#region Distance
   distance(x: number, y: number): number
   distance(secondVector: Vector2): number
-
   distance(vectorOrX: Vector2 | number, y?: number) {
     if (Vector2.isVector(vectorOrX))
-      return this.#distanceFromVector(vectorOrX as Vector2)
+      return this.#distanceFromCoordinates(
+        (vectorOrX as Vector2).x,
+        (vectorOrX as Vector2).y
+      )
 
     return this.#distanceFromCoordinates(vectorOrX as number, y)
-  }
-
-  #distanceFromVector(secondVector: Vector2): number {
-    const xDist = this.x - secondVector.x
-    const yDist = this.y - secondVector.y
-
-    return Math.sqrt(xDist * xDist + yDist * yDist)
   }
   #distanceFromCoordinates(x: number, y: number): number {
     const xDist = this.x - x
