@@ -1,5 +1,3 @@
-import { AcceptableValueTypes } from '../types/list-types'
-
 export class LinkedList {
   _rootItem: LinkedListItem
 
@@ -160,3 +158,5 @@ class LinkedListItem {
   }
   //#endregion
 }
+
+type AcceptableValueTypes = string | number
