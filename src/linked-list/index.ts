@@ -1,4 +1,4 @@
-import { LinkedList } from './classes/list-controller'
+import { LinkedList } from './classes/linked-list'
 // Do stuff with the data structure
 
 const myList = new LinkedList('Fry')
