@@ -1,0 +1,26 @@
+{
+  "name": "yuvals-stuff",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev:linked-list": "ts-node src/linked-list/index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yuval59/yuvals-stuff.git"
+  },
+  "keywords": [],
+  "author": "Yuval Maron",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yuval59/yuvals-stuff/issues"
+  },
+  "homepage": "https://github.com/yuval59/yuvals-stuff#readme",
+  "description": "",
+  "devDependencies": {
+    "@types/node": "^18.15.3",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.2"
+  }
+}
