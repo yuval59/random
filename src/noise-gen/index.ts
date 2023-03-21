@@ -21,3 +21,5 @@ for (let x = 0; x < width; x++) {
 }
 
 fs.writeFileSync('./image.json', JSON.stringify({ data: result }))
+console.log('Finished writing value JSON')
+console.log(`new random number: ${noiseMap.randomNumber}`)
