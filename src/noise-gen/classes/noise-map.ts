@@ -1,6 +1,6 @@
 import { Vector2 } from './vector'
 
-export class NoiseMap {
+export class GradientNoise {
   #size: number
   #vectorMap: Vector2[][]
 
