@@ -1,8 +1,20 @@
-import { Vector2 } from './classes/vector'
+import fs from 'fs'
+import { NoiseMap } from './classes/noise-map'
 
-const vectorA = Vector2.fromAngle(Math.PI / 4)
+const size = 600
+const width = 1000
+const height = 1000
 
-vectorA.rotate(Math.PI * 2)
+const noiseMap = new NoiseMap(size)
 
-console.log(vectorA.x)
-console.log(vectorA.y)
+const result: number[][] = []
+
+for (let i = 0; i < height; i++) {
+  const newRow: number[] = []
+  for (let n = 0; n < width; n++) {
+    newRow.push(noiseMap.getValueAt(n / width, i / height))
+  }
+  result.push(newRow)
+}
+
+fs.writeFileSync('./image.json', JSON.stringify({ data: result }))
