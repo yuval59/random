@@ -28,10 +28,6 @@ export class Vector2 {
   //#endregion
 
   //#region Vector math
-  dotProduct(secondVector: Vector2): number {
-    return this.x * secondVector.x + this.y * secondVector.y
-  }
-
   rotate(angle: number): void {
     const newAngle = this.Angle + angle
 
@@ -122,6 +118,21 @@ export class Vector2 {
     return Math.sqrt(xDist * xDist + yDist * yDist)
   }
   //#endregion
+
+  //#region Dot product
+  dotProduct(x: number, y: number): number
+  dotProduct(secondVector: Vector2): number
+  dotProduct(vectorOrX: Vector2 | number, y?: number): number {
+    if (Vector2.isVector(vectorOrX))
+      return this.#dotProduct(
+        (vectorOrX as Vector2).x,
+        (vectorOrX as Vector2).y
+      )
+
+    return this.#dotProduct(vectorOrX as number, y)
+  }
+  #dotProduct = (x: number, y: number): number => this.x * x + this.y * y
+  //#endregion
   //#endregion
 
   //#region Static methods
@@ -133,12 +144,10 @@ export class Vector2 {
     return new Vector2(Math.cos(angle) * magnitude, Math.sin(angle) * magnitude)
   }
 
-  static random(magnitude?: number): Vector2 {
-    if (!magnitude) magnitude = Math.random()
+  static random(randomnessFunction: Function, magnitude?: number): Vector2 {
+    const angle = randomnessFunction() * Math.PI * 2
 
-    const angle = Math.random() * Math.PI * 2
-
-    return this.fromAngle(angle, magnitude)
+    return this.fromAngle(angle, magnitude | 1)
   }
 
   static rotate(vectorA: Vector2, angle: number): Vector2 {

@@ -1,28 +1,23 @@
 import fs from 'fs'
 import { GradientNoise } from './classes/noise-map'
 
-const size = 10
+const seed = 127
 const width = 500
 const height = 500
+const stepSize = 0.02
 
-const noiseMapA = new GradientNoise(size)
-const noiseMapB = new GradientNoise(size)
+const noiseMap = new GradientNoise(seed)
 
 const result: number[][] = []
 
-for (let i = 0; i < height; i++) {
-  const newRow: number[] = []
-  for (let n = 0; n < width; n++) {
-    const valueA = noiseMapA.getValueAt(n / width, i / height)
-    const valueB = noiseMapB.getValueAt(n / width, i / height)
-    const avg = average(valueA, valueB)
-    newRow.push(avg)
+for (let x = 0; x < width; x++) {
+  const newColumn: number[] = []
+  for (let y = 0; y < height; y++) {
+    newColumn.push(
+      noiseMap.getValueAt((stepSize * y) / height, (stepSize * x) / width)
+    )
   }
-  result.push(newRow)
+  result.push(newColumn)
 }
 
 fs.writeFileSync('./image.json', JSON.stringify({ data: result }))
-
-function average(...numbers: number[]): number {
-  return numbers.reduce((acc, current) => (acc += current), 0) / numbers.length
-}
