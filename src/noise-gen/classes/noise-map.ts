@@ -26,6 +26,16 @@ export class GradientNoise {
     }
   }
 
+  //#region Basic getters
+  get Seed() {
+    return this.#seed
+  }
+
+  get randomNumber() {
+    return this.#randomnessFunction()
+  }
+  //#endregion
+
   //#region Math stuff
   getValueAt(x: number, y: number): number {
     x = x % 1
