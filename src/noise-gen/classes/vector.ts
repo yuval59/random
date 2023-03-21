@@ -7,63 +7,63 @@ export class Vector2 {
     this.#y = y
   }
 
-  getCopy = () => new Vector2(this.x, this.y)
+  getCopy = (): Vector2 => new Vector2(this.x, this.y)
 
   //#region Basic getters
-  get Magnitude() {
+  get Magnitude(): number {
     return Math.sqrt(this.x * this.x + this.y * this.y)
   }
 
-  get Angle() {
+  get Angle(): number {
     return Math.atan(this.y / this.x)
   }
 
-  get x() {
+  get x(): number {
     return this.#x
   }
 
-  get y() {
+  get y(): number {
     return this.#y
   }
   //#endregion
 
   //#region Vector math
-  dotProduct(secondVector: Vector2) {
+  dotProduct(secondVector: Vector2): number {
     return this.x * secondVector.x + this.y * secondVector.y
   }
 
-  rotate(angle: number) {
+  rotate(angle: number): void {
     const newAngle = this.Angle + angle
 
     this.#x = Math.cos(newAngle) * this.Magnitude
     this.#y = Math.sin(newAngle) * this.Magnitude
   }
 
-  angleBetween(secondVector: Vector2) {
+  angleBetween(secondVector: Vector2): number {
     const dotProduct = this.dotProduct(secondVector)
     const combinedMagnitude = this.Magnitude * secondVector.Magnitude
 
     return Math.acos(dotProduct / combinedMagnitude)
   }
 
-  normalize(magnitude: number = 1) {
+  normalize(magnitude: number = 1): void {
     const currentAngle = this.Angle
 
     this.#x = Math.cos(currentAngle) * magnitude
     this.#y = Math.sin(currentAngle) * magnitude
   }
 
-  multiply(scalar: number) {
+  multiply(scalar: number): void {
     this.#x *= scalar
     this.#y *= scalar
   }
 
-  divide(scalar: number) {
+  divide(scalar: number): void {
     this.#x /= scalar
     this.#y /= scalar
   }
 
-  lerp(secondVector: Vector2, amount: number) {
+  lerp(secondVector: Vector2, amount: number): void {
     this.#x = this.x * (1 - amount) + secondVector.x * amount
     this.#y = this.y * (1 - amount) + secondVector.y * amount
   }
@@ -73,13 +73,13 @@ export class Vector2 {
   //#region Addition
   add(x: number, y: number): void
   add(secondVector: Vector2): void
-  add(vectorOrX: Vector2 | number, y?: number) {
+  add(vectorOrX: Vector2 | number, y?: number): void {
     if (Vector2.isVector(vectorOrX))
       return this.#addValues((vectorOrX as Vector2).x, (vectorOrX as Vector2).y)
 
     this.#addValues(vectorOrX as number, y)
   }
-  #addValues(x: number, y: number) {
+  #addValues(x: number, y: number): void {
     this.#x += x
     this.#y += y
   }
@@ -88,7 +88,7 @@ export class Vector2 {
   //#region Subtraction
   subtract(x: number, y: number): void
   subtract(secondVector: Vector2): void
-  subtract(vectorOrX: Vector2 | number, y?: number) {
+  subtract(vectorOrX: Vector2 | number, y?: number): void {
     if (Vector2.isVector(vectorOrX))
       return this.#subtractValues(
         (vectorOrX as Vector2).x,
@@ -97,7 +97,7 @@ export class Vector2 {
 
     this.#subtractValues(vectorOrX as number, y)
   }
-  #subtractValues(x: number, y: number) {
+  #subtractValues(x: number, y: number): void {
     this.#x -= x
     this.#y -= y
   }
@@ -106,7 +106,7 @@ export class Vector2 {
   //#region Distance
   distance(x: number, y: number): number
   distance(secondVector: Vector2): number
-  distance(vectorOrX: Vector2 | number, y?: number) {
+  distance(vectorOrX: Vector2 | number, y?: number): number {
     if (Vector2.isVector(vectorOrX))
       return this.#distanceFromCoordinates(
         (vectorOrX as Vector2).x,
@@ -125,59 +125,61 @@ export class Vector2 {
   //#endregion
 
   //#region Static methods
-  static isVector(something: unknown) {
+  static isVector(something: unknown): boolean {
     return something instanceof Vector2
   }
 
-  static fromAngle(angle: number, magnitude: number = 1) {
+  static fromAngle(angle: number, magnitude: number = 1): Vector2 {
     return new Vector2(Math.cos(angle) * magnitude, Math.sin(angle) * magnitude)
   }
 
-  static random(magnitude: number = 1) {
+  static random(magnitude?: number): Vector2 {
+    if (!magnitude) magnitude = Math.random()
+
     const angle = Math.random() * Math.PI * 2
 
     return this.fromAngle(angle, magnitude)
   }
 
-  static rotate(vectorA: Vector2, angle: number) {
+  static rotate(vectorA: Vector2, angle: number): Vector2 {
     return this.fromAngle(vectorA.Angle + angle, vectorA.Magnitude)
   }
 
-  static angleBetween(vectorA: Vector2, vectorB: Vector2) {
+  static angleBetween(vectorA: Vector2, vectorB: Vector2): number {
     const dotProduct = this.dotProduct(vectorA, vectorB)
     const combinedMagnitude = vectorA.Magnitude * vectorB.Magnitude
 
     return Math.acos(dotProduct / combinedMagnitude)
   }
 
-  static normalize(vector: Vector2, magnitude: number = 1) {
+  static normalize(vector: Vector2, magnitude: number = 1): Vector2 {
     return this.fromAngle(vector.Angle, magnitude)
   }
 
-  static dotProduct(vectorA: Vector2, vectorB: Vector2) {
+  static dotProduct(vectorA: Vector2, vectorB: Vector2): number {
     return vectorA.x * vectorB.x + vectorA.y * vectorB.y
   }
 
-  static multiplyVector(vectorA: Vector2, scalar: number) {
+  static multiplyVector(vectorA: Vector2, scalar: number): Vector2 {
     return new Vector2(vectorA.x * scalar, vectorA.y * scalar)
   }
 
-  static add(vectorA: Vector2, vectorB: Vector2) {
+  static add(vectorA: Vector2, vectorB: Vector2): Vector2 {
     return new Vector2(vectorA.x + vectorB.x, vectorA.y + vectorB.y)
   }
 
-  static subtract(vectorA: Vector2, vectorB: Vector2) {
+  static subtract(vectorA: Vector2, vectorB: Vector2): Vector2 {
     return new Vector2(vectorA.x - vectorB.x, vectorA.y - vectorB.y)
   }
 
-  static getDistance(vectorA: Vector2, vectorB: Vector2) {
+  static getDistance(vectorA: Vector2, vectorB: Vector2): number {
     const xDist = vectorA.x - vectorB.x
     const yDist = vectorA.y - vectorB.y
 
     return Math.sqrt(xDist * xDist + yDist * yDist)
   }
 
-  static lerp(vectorA: Vector2, vectorB: Vector2, amount: number) {
+  static lerp(vectorA: Vector2, vectorB: Vector2, amount: number): Vector2 {
     return new Vector2(
       vectorA.x * (1 - amount) + vectorB.x * amount,
       vectorA.y * (1 - amount) + vectorB.y * amount
