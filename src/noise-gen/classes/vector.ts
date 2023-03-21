@@ -144,8 +144,9 @@ export class Vector2 {
     return new Vector2(Math.cos(angle) * magnitude, Math.sin(angle) * magnitude)
   }
 
-  static random(randomnessFunction: Function, magnitude?: number): Vector2 {
-    const angle = randomnessFunction() * Math.PI * 2
+  static random(randomnessFunction?: Function, magnitude?: number): Vector2 {
+    const angle =
+      (randomnessFunction ? randomnessFunction() : Math.random()) * Math.PI * 2
 
     return this.fromAngle(angle, magnitude | 1)
   }
