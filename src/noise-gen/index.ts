@@ -1,5 +1,5 @@
 import fs from 'fs'
-import { GradientNoise } from './classes/noise-map'
+import { GradientNoise } from './classes/noise'
 
 const seed = 127
 const width = 500
