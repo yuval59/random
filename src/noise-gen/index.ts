@@ -1,10 +1,10 @@
 import fs from 'fs'
-import { GradientNoise } from './classes/noise'
+import { GradientNoise, ValueNoise } from './classes/noise'
 
 const seed = 127
 const width = 500
 const height = 500
-const stepSize = 0.02
+const stepSize = 0.03
 
 const noiseMap = new GradientNoise(seed)
 
