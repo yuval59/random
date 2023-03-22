@@ -1,3 +1,4 @@
+import { getMulberry32, lerpCurve } from '../useful-math'
 import { Vector2 } from './vector'
 
 export class GradientNoise {
@@ -8,22 +9,13 @@ export class GradientNoise {
 
   constructor(seed: number) {
     this.#seed = seed
-    this.#randomnessFunction = this.#createMulberry32(this.#seed)
+    this.#randomnessFunction = getMulberry32(this.#seed)
 
     this.#vectorMap = [...Array(this.#size).keys()].map((something) =>
       [...Array(this.#size).keys()].map((somethingElse) =>
         Vector2.random(this.#randomnessFunction)
       )
     )
-  }
-
-  #createMulberry32(a: number): Function {
-    return function () {
-      var t = (a += 0x6d2b79f5)
-      t = Math.imul(t ^ (t >>> 15), t | 1)
-      t ^= t + Math.imul(t ^ (t >>> 7), t | 61)
-      return ((t ^ (t >>> 14)) >>> 0) / 4294967296
-    }
   }
 
   //#region Basic getters
@@ -55,19 +47,12 @@ export class GradientNoise {
       yOffset - 1
     )
 
-    return this.#lerp(
-      this.#lerp(n00, n01, this.#getFadeCurve(yOffset)),
-      this.#lerp(n10, n11, this.#getFadeCurve(yOffset)),
-      this.#getFadeCurve(xOffset)
+    return lerpCurve(
+      lerpCurve(n00, n01, yOffset),
+      lerpCurve(n10, n11, yOffset),
+      xOffset
     )
   }
 
-  #lerp(a: number, b: number, amount: number): number {
-    return a * (1 - amount) + b * amount
-  }
-
-  #getFadeCurve(t: number): number {
-    return t * t * t * (t * (t * 6 - 15) + 10)
-  }
   //#endregion
 }
