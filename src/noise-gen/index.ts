@@ -18,6 +18,9 @@ for (let x = 0; x < width; x++) {
   result.push(newColumn)
 }
 
-fs.writeFileSync('./image.json', JSON.stringify({ data: result }))
+fs.writeFileSync(
+  'processing-noise-vis/data/image.json',
+  JSON.stringify({ data: result })
+)
 console.log('Finished writing value JSON')
 console.log(`new random number: ${noiseMap.randomNumber}`)
