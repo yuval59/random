@@ -1,4 +1,4 @@
-import { getMulberry32, lerpCurve } from '../useful-math'
+import { getMulberry32, lerp } from '../useful-math'
 
 export class ValueNoise {
   #seed: number
@@ -43,11 +43,7 @@ export class ValueNoise {
     const n10 = this.#valueMap[x + 1][y]
     const n11 = this.#valueMap[x + 1][y + 1]
 
-    return lerpCurve(
-      lerpCurve(n00, n01, yOffset),
-      lerpCurve(n10, n11, yOffset),
-      xOffset
-    )
+    return lerp(lerp(n00, n01, yOffset), lerp(n10, n11, yOffset), xOffset)
   }
   //#endregion
 }
