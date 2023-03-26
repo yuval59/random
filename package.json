@@ -5,7 +5,8 @@
   "scripts": {
     "build": "tsc",
     "dev:linked-list": "ts-node src/linked-list/index",
-    "dev:noise-gen": "ts-node src/noise-gen/index"
+    "dev:noise-gen": "ts-node src/noise-gen/index",
+    "dev:n-dimensions": "ts-node src/n-dimensions/index"
   },
   "repository": {
     "type": "git",
