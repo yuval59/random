@@ -4,7 +4,8 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "dev:linked-list": "ts-node src/linked-list/index"
+    "dev:linked-list": "ts-node src/linked-list/index",
+    "dev:noise-gen": "ts-node src/noise-gen/index"
   },
   "repository": {
     "type": "git",

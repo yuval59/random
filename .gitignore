@@ -102,3 +102,7 @@ dist
 
 # TernJS port file
 .tern-port
+image.json
+
+# Processing noise visualizer
+processing-noise-vis/
