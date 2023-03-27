@@ -4,12 +4,14 @@ export class VectorN {
   #dimensions: number
   #values: number[]
 
-  constructor(...values: number[]) {
+  constructor(values: number[])
+  constructor(...values: number[])
+  constructor(values: any) {
     this.#dimensions = values.length
     this.#values = values
   }
 
-  getCopy = () => new VectorN(...this.#values)
+  getCopy = () => new VectorN(this.Values)
 
   //#region Basic getters
   get Magnitude(): number {
@@ -93,7 +95,7 @@ export class VectorN {
     randomnessFunction: Function = Math.random
   ): VectorN {
     const randomVector = new VectorN(
-      ...Array.from({ length: dimensions }, () => randomnessFunction())
+      Array.from({ length: dimensions }, () => randomnessFunction())
     )
 
     return VectorN.normalize(randomVector, magnitude)
@@ -124,7 +126,7 @@ export class VectorN {
       throw constants.ERRORS.DIMENSION_INEQUALITY
 
     return new VectorN(
-      ...vectorA.Values.map((val, index) => val + vectorB.getValue(index))
+      vectorA.Values.map((val, index) => val + vectorB.getValue(index))
     )
   }
 
@@ -133,16 +135,16 @@ export class VectorN {
       throw constants.ERRORS.DIMENSION_INEQUALITY
 
     return new VectorN(
-      ...vectorA.Values.map((val, index) => val - vectorB.getValue(index))
+      vectorA.Values.map((val, index) => val - vectorB.getValue(index))
     )
   }
 
   static multiply(vector: VectorN, scalar: number): VectorN {
-    return new VectorN(...vector.Values.map((val) => val * scalar))
+    return new VectorN(vector.Values.map((val) => val * scalar))
   }
 
   static divide(vector: VectorN, scalar: number): VectorN {
-    return new VectorN(...vector.Values.map((val) => val / scalar))
+    return new VectorN(vector.Values.map((val) => val / scalar))
   }
 
   static getDistance(vectorA: VectorN, vectorB: VectorN): number {
