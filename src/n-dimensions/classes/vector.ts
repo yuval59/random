@@ -1,5 +1,3 @@
-import constants from '../constants'
-
 export class VectorN {
   #dimensions: number
   #values: number[]
@@ -48,18 +46,12 @@ export class VectorN {
 
   //#region Vector math
   add(vector: VectorN): void {
-    if (this.Dimensions != vector.Dimensions)
-      throw constants.ERRORS.DIMENSION_INEQUALITY
-
     this.#values = this.#values.map(
       (val, index) => val + vector.getValue(index)
     )
   }
 
   subtract(vector: VectorN): void {
-    if (this.Dimensions != vector.Dimensions)
-      throw constants.ERRORS.DIMENSION_INEQUALITY
-
     this.#values = this.#values.map(
       (val, index) => val - vector.getValue(index)
     )
@@ -102,9 +94,6 @@ export class VectorN {
   }
 
   static dotProduct(vectorA: VectorN, vectorB: VectorN): number {
-    if (vectorA.Dimensions != vectorB.Dimensions)
-      throw constants.ERRORS.DIMENSION_INEQUALITY
-
     return vectorA.Values.reduce(
       (acc, current, index) => (acc += current * vectorB.getValue(index)),
       0
@@ -112,9 +101,6 @@ export class VectorN {
   }
 
   static angleBetween(vectorA: VectorN, vectorB: VectorN): number {
-    if (vectorA.Dimensions != vectorB.Dimensions)
-      throw constants.ERRORS.DIMENSION_INEQUALITY
-
     return Math.acos(
       (vectorA.Magnitude * vectorB.Magnitude) /
         VectorN.dotProduct(vectorA, vectorB)
@@ -122,18 +108,12 @@ export class VectorN {
   }
 
   static add(vectorA: VectorN, vectorB: VectorN): VectorN {
-    if (vectorA.Dimensions != vectorB.Dimensions)
-      throw constants.ERRORS.DIMENSION_INEQUALITY
-
     return new VectorN(
       vectorA.Values.map((val, index) => val + vectorB.getValue(index))
     )
   }
 
   static subtract(vectorA: VectorN, vectorB: VectorN): VectorN {
-    if (vectorA.Dimensions != vectorB.Dimensions)
-      throw constants.ERRORS.DIMENSION_INEQUALITY
-
     return new VectorN(
       vectorA.Values.map((val, index) => val - vectorB.getValue(index))
     )
@@ -148,9 +128,6 @@ export class VectorN {
   }
 
   static getDistance(vectorA: VectorN, vectorB: VectorN): number {
-    if (vectorA.Dimensions != vectorB.Dimensions)
-      throw constants.ERRORS.DIMENSION_INEQUALITY
-
     return Math.sqrt(
       vectorA.Values.reduce(
         (acc, val, index) =>
