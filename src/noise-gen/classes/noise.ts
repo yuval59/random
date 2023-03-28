@@ -1,2 +1,2 @@
-export { GradientNoise } from './gradient-noise'
-export { ValueNoise } from './value-noise'
+export { GradientNoise } from './noise-types/gradient-noise'
+export { ValueNoise } from './noise-types/value-noise'
