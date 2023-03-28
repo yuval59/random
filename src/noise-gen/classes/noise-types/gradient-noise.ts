@@ -1,7 +1,8 @@
-import { getMulberry32, lerpCurve } from '../useful-math'
-import { Vector2 } from './vector'
+import { NoiseMapInterface } from '../../interfaces'
+import { getMulberry32, lerpCurve } from '../../useful-math'
+import { Vector2 } from '../vector'
 
-export class GradientNoise {
+export class GradientNoise implements NoiseMapInterface {
   #seed: number
   #randomnessFunction: Function
   #size: number = 255
@@ -11,16 +12,23 @@ export class GradientNoise {
     this.#seed = seed
     this.#randomnessFunction = getMulberry32(this.#seed)
 
-    this.#vectorMap = [...Array(this.#size).keys()].map((something) =>
-      [...Array(this.#size).keys()].map((somethingElse) =>
-        Vector2.random(this.#randomnessFunction)
-      )
+    this.#vectorMap = Array.from({ length: this.Size }, () =>
+      this.#makeInsideArr()
     )
   }
+
+  #makeInsideArr = () =>
+    Array.from({ length: this.Size }, () =>
+      Vector2.random(this.#randomnessFunction)
+    )
 
   //#region Basic getters
   get Seed() {
     return this.#seed
+  }
+
+  get Size() {
+    return this.#size
   }
 
   get randomNumber() {

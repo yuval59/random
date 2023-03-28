@@ -19,3 +19,17 @@ export function lerpCurve(a: number, b: number, amount: number): number {
   const curve = getFadeCurve(amount)
   return a * (1 - curve) + b * curve
 }
+
+export function getCurrentSeed(randomnessFunction: Function): number {
+  return map_range(randomnessFunction(), 0, 1, 0, 10000)
+}
+
+export function map_range(
+  value: number,
+  low1: number,
+  high1: number,
+  low2: number,
+  high2: number
+): number {
+  return low2 + ((high2 - low2) * (value - low1)) / (high1 - low1)
+}
