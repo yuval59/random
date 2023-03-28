@@ -20,15 +20,15 @@ export class VectorN {
   }
 
   get x(): number {
-    return this.#values[0] | 0
+    return this.Dimensions > 0 ? this.#values[0] : 0
   }
 
   get y(): number {
-    return this.#values[1] | 0
+    return this.Dimensions > 1 ? this.#values[1] : 0
   }
 
   get z(): number {
-    return this.#values[2] | 0
+    return this.Dimensions > 2 ? this.#values[2] : 0
   }
 
   get Dimensions(): number {
