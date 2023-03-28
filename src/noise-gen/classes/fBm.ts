@@ -1,11 +1,10 @@
-import { NoiseMapInterface } from '../interfaces'
+import { NoiseMapInterface, RandomnessFunctionInstance } from '../interfaces'
 import { FBMCreationParams, NoiseMapClassParam } from '../types'
-import { getCurrentSeed } from '../useful-math'
 
 export const getFBM = (
   classToImplement: NoiseMapClassParam,
   octaves: number,
-  randomnessFunction: Function = Math.random,
+  randomnessFunction: RandomnessFunctionInstance = Math.random,
   amplitude: number = 0.05,
   startingXFrequency: number = 0.01,
   startingYFrequency: number = 0.01,
@@ -15,7 +14,7 @@ export const getFBM = (
   new FractionalBrownianMotion({
     noiseMaps: Array.from(
       { length: octaves },
-      () => new classToImplement(getCurrentSeed(randomnessFunction))
+      () => new classToImplement(randomnessFunction)
     ),
     x_frequency: startingXFrequency,
     y_frequency: startingYFrequency,

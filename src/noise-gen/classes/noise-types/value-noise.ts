@@ -1,15 +1,13 @@
-import { NoiseMapInterface } from '../../interfaces'
-import { getMulberry32, lerp } from '../../useful-math'
+import { NoiseMapInterface, RandomnessFunctionInstance } from '../../interfaces'
+import { lerp } from '../../useful-math'
 
 export class ValueNoise implements NoiseMapInterface {
-  #seed: number
-  #randomnessFunction: Function
+  #randomnessFunction: RandomnessFunctionInstance
   #size: number = 255
   #valueMap: number[][]
 
-  constructor(seed: number) {
-    this.#randomnessFunction = getMulberry32(seed)
-    this.#seed = seed
+  constructor(randomnessFunction: RandomnessFunctionInstance) {
+    this.#randomnessFunction = randomnessFunction
 
     this.#valueMap = Array.from({ length: this.Size }, () =>
       this.#makeInsideArr()
@@ -22,10 +20,6 @@ export class ValueNoise implements NoiseMapInterface {
   //#region Basic getters
   get Size() {
     return this.#size
-  }
-
-  get Seed() {
-    return this.#seed
   }
 
   get randomNumber() {
