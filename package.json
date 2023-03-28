@@ -7,7 +7,7 @@
     "dev:linked-list": "ts-node src/linked-list/index",
     "dev:noise-gen": "ts-node src/noise-gen/index",
     "noise-gen-examples:single-dimension": "ts-node src/noise-gen/examples/single-dimension.ts",
-    "noise-gen-examples:noise-gen": "ts-node src/noise-gen/examples/single-dimension.ts"
+    "noise-gen-examples:noise-map": "ts-node src/noise-gen/examples/noise-map.ts"
   },
   "repository": {
     "type": "git",
