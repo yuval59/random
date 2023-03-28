@@ -9,7 +9,7 @@ export class ValueNoise implements NoiseMapInterface {
 
   constructor(seed: number) {
     this.#seed = seed
-    this.#randomnessFunction = getMulberry32(this.#seed)
+    this.#randomnessFunction = getMulberry32(this.Seed)
 
     this.#valueMap = Array.from({ length: this.Size }, () =>
       this.#makeInsideArr()
@@ -31,6 +31,10 @@ export class ValueNoise implements NoiseMapInterface {
   get randomNumber() {
     return this.#randomnessFunction()
   }
+
+  getValue(x: number, y: number): number {
+    return this.#valueMap[x][y] ?? 0
+  }
   //#endregion
 
   //#region Math stuff
@@ -38,16 +42,16 @@ export class ValueNoise implements NoiseMapInterface {
     x = x % 1
     y = y % 1
 
-    const xOffset = (x * (this.#size - 1)) % 1
-    const yOffset = (y * (this.#size - 1)) % 1
+    const xOffset = (x * (this.Size - 1)) % 1
+    const yOffset = (y * (this.Size - 1)) % 1
 
-    x = x * (this.#size - 1) - xOffset
-    y = y * (this.#size - 1) - yOffset
+    x = x * (this.Size - 1) - xOffset
+    y = y * (this.Size - 1) - yOffset
 
-    const n00 = this.#valueMap[x][y]
-    const n01 = this.#valueMap[x][y + 1]
-    const n10 = this.#valueMap[x + 1][y]
-    const n11 = this.#valueMap[x + 1][y + 1]
+    const n00 = this.getValue(x, y)
+    const n01 = this.getValue(x, y + 1)
+    const n10 = this.getValue(x + 1, y)
+    const n11 = this.getValue(x + 1, y + 1)
 
     return lerp(lerp(n00, n01, yOffset), lerp(n10, n11, yOffset), xOffset)
   }

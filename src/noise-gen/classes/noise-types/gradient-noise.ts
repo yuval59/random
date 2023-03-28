@@ -34,6 +34,10 @@ export class GradientNoise implements NoiseMapInterface {
   get randomNumber() {
     return this.#randomnessFunction()
   }
+
+  getVector(x: number, y: number): Vector2 {
+    return this.#vectorMap[x][y]
+  }
   //#endregion
 
   //#region Math stuff
@@ -41,16 +45,16 @@ export class GradientNoise implements NoiseMapInterface {
     x = x % 1
     y = y % 1
 
-    const xOffset = (x * (this.#size - 1)) % 1
-    const yOffset = (y * (this.#size - 1)) % 1
+    const xOffset = (x * (this.Size - 1)) % 1
+    const yOffset = (y * (this.Size - 1)) % 1
 
-    x = x * (this.#size - 1) - xOffset
-    y = y * (this.#size - 1) - yOffset
+    x = x * (this.Size - 1) - xOffset
+    y = y * (this.Size - 1) - yOffset
 
-    const n00 = this.#vectorMap[x][y].dotProduct(xOffset, yOffset)
-    const n01 = this.#vectorMap[x][y + 1].dotProduct(xOffset, yOffset - 1)
-    const n10 = this.#vectorMap[x + 1][y].dotProduct(xOffset - 1, yOffset)
-    const n11 = this.#vectorMap[x + 1][y + 1].dotProduct(
+    const n00 = this.getVector(x, y).dotProduct(xOffset, yOffset)
+    const n01 = this.getVector(x, y + 1).dotProduct(xOffset, yOffset - 1)
+    const n10 = this.getVector(x + 1, y).dotProduct(xOffset - 1, yOffset)
+    const n11 = this.getVector(x + 1, y + 1).dotProduct(
       xOffset - 1,
       yOffset - 1
     )
