@@ -1,5 +1,3 @@
-import { GradientNoise, ValueNoise } from './classes/noise'
+import { NoiseMapInterface } from './interfaces'
 
-export type NoiseMaps = GradientNoise | ValueNoise
-
-export type NoiseMapClassParam = new (seed: number) => NoiseMaps
+export type NoiseMapClassParam = new (seed: number) => NoiseMapInterface

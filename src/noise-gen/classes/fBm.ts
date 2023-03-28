@@ -1,5 +1,5 @@
 import { NoiseMapInterface } from '../interfaces'
-import { NoiseMapClassParam, NoiseMaps } from '../types'
+import { NoiseMapClassParam } from '../types'
 import { getCurrentSeed } from '../useful-math'
 
 export function getFBM(
@@ -33,17 +33,17 @@ export class FractionalBrownianMotion implements NoiseMapInterface {
   #lacunarity: number
   #gain: number
 
-  #noiseMaps: NoiseMaps[]
+  #noiseMaps: NoiseMapInterface[]
 
   constructor(
-    randomnessFunctions: NoiseMaps[],
+    noiseMaps: NoiseMapInterface[],
     x_frequency: number,
     y_frequency: number,
     amplitude: number,
     lacunarity: number,
     gain: number
   ) {
-    this.#noiseMaps = randomnessFunctions
+    this.#noiseMaps = noiseMaps
     this.#startingXFrequency = x_frequency
     this.#startingYFrequency = y_frequency
     this.#startingAmplitude = amplitude
