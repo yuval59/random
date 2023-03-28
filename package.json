@@ -7,7 +7,9 @@
     "dev:linked-list": "ts-node src/linked-list/index",
     "dev:noise-gen": "ts-node src/noise-gen/index",
     "dev:n-dimensions": "ts-node src/n-dimensions/index",
-    "n-dimensions:convergence": "ts-node src/n-dimensions/examples/convergence"
+    "n-dimensions:convergence": "ts-node src/n-dimensions/examples/convergence",
+    "noise-gen-examples:single-dimension": "ts-node src/noise-gen/examples/single-dimension.ts",
+    "noise-gen-examples:noise-map": "ts-node src/noise-gen/examples/noise-map.ts"
   },
   "repository": {
     "type": "git",
