@@ -1,7 +1,7 @@
-import { NoiseMap } from './interfaces'
+import { NoiseMap } from './abstract'
 
 export const getFBM = (
-  noiseMaps: NoiseMap[],
+  noiseMaps: NoiseMap<unknown>[],
   amplitude: number = 0.05,
   startingXFrequency: number = 0.01,
   startingYFrequency: number = 0.01,
@@ -18,7 +18,7 @@ export const getFBM = (
   })
 
 type FBMCreationParams = {
-  noiseMaps: NoiseMap[]
+  noiseMaps: NoiseMap<unknown>[]
   startingXFrequency: number
   startingYFrequency: number
   amplitude: number
@@ -26,7 +26,7 @@ type FBMCreationParams = {
   gain: number
 }
 
-class FractionalBrownianMotion implements NoiseMap {
+class FractionalBrownianMotion {
   #octaves: number
   #startingXFrequency: number
   #startingYFrequency: number
@@ -34,7 +34,7 @@ class FractionalBrownianMotion implements NoiseMap {
   #lacunarity: number
   #gain: number
 
-  #noiseMaps: NoiseMap[]
+  #noiseMaps: NoiseMap<unknown>[]
 
   constructor(params: FBMCreationParams) {
     this.#noiseMaps = params.noiseMaps
