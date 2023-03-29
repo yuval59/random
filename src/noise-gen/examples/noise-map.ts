@@ -1,5 +1,5 @@
 import fs from 'fs'
-import { getFBM, GradientNoise, ValueNoise } from '../noise-pass'
+import { getFBM, GradientNoise, ValueNoise } from '../noise/noise-pass'
 import { getMulberry32 } from '../utils/useful-math'
 
 // Noise map constants
