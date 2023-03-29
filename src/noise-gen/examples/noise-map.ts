@@ -11,7 +11,9 @@ const width = 500
 const height = 500
 const stepSize = 0.003
 
-const noiseMap = getFBM(GradientNoise, octaves, getMulberry32(seed))
+const noiseMap = getFBM(
+  Array.from({ length: octaves }, () => new GradientNoise(getMulberry32(seed)))
+)
 
 const result: number[][] = []
 let max = -999

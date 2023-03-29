@@ -1,8 +1,8 @@
-import { NoiseMapInterface, RandomnessFunctionInstance } from '../../interfaces'
+import { NoiseMap, RandomnessFunctionInstance } from '../../interfaces'
 import { lerpCurve } from '../../useful-math'
 import { Vector2 } from '../vector'
 
-export class GradientNoise implements NoiseMapInterface {
+export class GradientNoise implements NoiseMap {
   #randomnessFunction: RandomnessFunctionInstance
   #size: number = 255
   #vectorMap: Vector2[][]

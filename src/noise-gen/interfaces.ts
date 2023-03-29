@@ -1,4 +1,4 @@
-export interface NoiseMapInterface {
+export interface NoiseMap {
   getValueAt(x: number, y: number): number
 }
 
