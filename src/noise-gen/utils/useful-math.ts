@@ -1,4 +1,7 @@
-import { RandomnessFunction, RandomnessFunctionInstance } from './interfaces'
+import {
+  RandomnessFunction,
+  RandomnessFunctionInstance,
+} from '../noise/interfaces'
 
 export const getMulberry32: RandomnessFunction<number> = (
   seed: number

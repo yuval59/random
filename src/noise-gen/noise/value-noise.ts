@@ -1,5 +1,5 @@
-import { NoiseMap, RandomnessFunctionInstance } from '../../interfaces'
-import { lerp } from '../../useful-math'
+import { NoiseMap, RandomnessFunctionInstance } from './interfaces'
+import { lerp } from '../utils/useful-math'
 
 export class ValueNoise implements NoiseMap {
   #randomnessFunction: RandomnessFunctionInstance

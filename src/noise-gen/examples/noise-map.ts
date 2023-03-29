@@ -1,7 +1,6 @@
 import fs from 'fs'
-import { getFBM } from '../classes/fBm'
-import { GradientNoise, ValueNoise } from '../classes/noise'
-import { getMulberry32 } from '../useful-math'
+import { getFBM, GradientNoise, ValueNoise } from '../noise-pass'
+import { getMulberry32 } from '../utils/useful-math'
 
 // Noise map constants
 const octaves = 8
