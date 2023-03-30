@@ -21,7 +21,7 @@ export abstract class NoiseMap<mapType> {
     return this.#size
   }
 
-  getValue(x: number, y: number): mapType {
+  protected getValue(x: number, y: number): mapType {
     return this.#valueMap[x][y]
   }
 }
