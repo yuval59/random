@@ -1,33 +1,6 @@
 import { NoiseMap } from './abstract'
 
-export const getFBM = (
-  noiseMaps: NoiseMap<unknown>[],
-  amplitude: number = 0.05,
-  startingXFrequency: number = 0.01,
-  startingYFrequency: number = 0.01,
-  lacunarity: number = 2.5,
-  gain: number = 0.5
-): FractionalBrownianMotion =>
-  new FractionalBrownianMotion({
-    noiseMaps,
-    startingXFrequency,
-    startingYFrequency,
-    amplitude,
-    lacunarity,
-    gain,
-  })
-
-type FBMCreationParams = {
-  noiseMaps: NoiseMap<unknown>[]
-  startingXFrequency: number
-  startingYFrequency: number
-  amplitude: number
-  lacunarity: number
-  gain: number
-}
-
-class FractionalBrownianMotion {
-  #octaves: number
+export class FractionalBrownianMotion {
   #startingXFrequency: number
   #startingYFrequency: number
   #startingAmplitude: number
@@ -36,19 +9,25 @@ class FractionalBrownianMotion {
 
   #noiseMaps: NoiseMap<unknown>[]
 
-  constructor(params: FBMCreationParams) {
-    this.#noiseMaps = params.noiseMaps
-    this.#octaves = params.noiseMaps.length
-    this.#startingXFrequency = params.startingXFrequency
-    this.#startingYFrequency = params.startingYFrequency
-    this.#startingAmplitude = params.amplitude
-    this.#lacunarity = params.lacunarity
-    this.#gain = params.gain
+  constructor(
+    noiseMaps: NoiseMap<unknown>[],
+    startingXFrequency: number = 0.01,
+    startingYFrequency: number = 0.01,
+    amplitude: number = 0.05,
+    lacunarity: number = 2.5,
+    gain: number = 0.5
+  ) {
+    this.#noiseMaps = noiseMaps
+    this.#startingXFrequency = startingXFrequency
+    this.#startingYFrequency = startingYFrequency
+    this.#startingAmplitude = amplitude
+    this.#lacunarity = lacunarity
+    this.#gain = gain
   }
 
   //#region Basic getters
   get Octaves(): number {
-    return this.#octaves
+    return this.#noiseMaps.length
   }
 
   get xFrequency(): number {

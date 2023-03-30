@@ -1,5 +1,9 @@
 import fs from 'fs'
-import { getFBM, GradientNoise, ValueNoise } from '../noise/noise-pass'
+import {
+  FractionalBrownianMotion,
+  GradientNoise,
+  ValueNoise,
+} from '../noise/noise-pass'
 import { getMulberry32 } from '../utils/useful-math'
 
 // Noise map constants
@@ -10,7 +14,7 @@ const width = 500
 const height = 500
 const stepSize = 0.003
 
-const noiseMap = getFBM(
+const noiseMap = new FractionalBrownianMotion(
   Array.from({ length: octaves }, () => new GradientNoise(getMulberry32(seed)))
 )
 
