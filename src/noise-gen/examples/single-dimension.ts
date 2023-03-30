@@ -1,6 +1,6 @@
 import { writeFileSync } from 'fs'
 import { getMulberry32 } from '../utils/useful-math'
-import { getFBM, GradientNoise, ValueNoise } from '../noise/noise-pass'
+import { getFBM, GradientNoise, ValueNoise } from '../noise/noise'
 
 // Noise map constants
 const octaves = 8

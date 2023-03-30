@@ -3,7 +3,7 @@ import {
   FractionalBrownianMotion,
   GradientNoise,
   ValueNoise,
-} from '../noise/noise-pass'
+} from '../noise/noise'
 import { getMulberry32 } from '../utils/useful-math'
 
 // Noise map constants
