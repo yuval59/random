@@ -1,5 +1,9 @@
-export interface RandomnessFunction<SeedType> {
-  (seed: SeedType): RandomnessFunctionInstance
+export interface HashFunction<outputType> {
+  (seed: string): outputType
+}
+
+export interface RandomnessFunction<seedType> {
+  (seed: seedType): RandomnessFunctionInstance
 }
 
 export interface RandomnessFunctionInstance {
