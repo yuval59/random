@@ -4,7 +4,7 @@ import {
   GradientNoise,
   ValueNoise,
 } from '../noise/noise'
-import { getHashedSFC, getMulberry32 } from '../utils/useful-math'
+import { getHashedL4PRNG, getMulberry32 } from '../utils/useful-math'
 
 // Noise map constants
 const octaves = 8

@@ -1,8 +1,12 @@
 import { HashFunction, RandomnessFunction } from '../noise/interfaces'
 
-export const getHashedSFC: HashFunction<RandomnessFunctionInstance> = (
-  seed: string
-): RandomnessFunctionInstance => sfc32(cyrb128(seed))
+export function getHashedL4PRNG(
+  seed: string,
+  hashFunction: HashFunction<length4Arr> = cyrb128,
+  PRNG: (...seed: length4Arr) => RandomnessFunction = sfc32
+): RandomnessFunction {
+  return PRNG(...hashFunction(seed))
+}
 
 type length4Arr = [number, number, number, number]
 
