@@ -2,11 +2,7 @@ export interface HashFunction<outputType> {
   (seed: string): outputType
 }
 
-export interface RandomnessFunction<seedType> {
-  (seed: seedType): RandomnessFunctionInstance
-}
-
-export interface RandomnessFunctionInstance {
+export interface RandomnessFunction {
   (): number
 }
 

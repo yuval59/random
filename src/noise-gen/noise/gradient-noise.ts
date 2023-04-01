@@ -1,10 +1,10 @@
 import { lerpCurve } from '../utils/useful-math'
 import { Vector2 } from '../utils/vector'
 import { NoiseMap } from './abstract'
-import { RandomnessFunctionInstance } from './interfaces'
+import { RandomnessFunction } from './interfaces'
 
 export class GradientNoise extends NoiseMap<Vector2> {
-  constructor(randomnessFunction: RandomnessFunctionInstance, size?: number) {
+  constructor(randomnessFunction: RandomnessFunction, size?: number) {
     super(() => Vector2.random(randomnessFunction), size)
   }
 

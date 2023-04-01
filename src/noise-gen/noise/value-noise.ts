@@ -1,9 +1,9 @@
 import { lerp } from '../utils/useful-math'
 import { NoiseMap } from './abstract'
-import { RandomnessFunctionInstance } from './interfaces'
+import { RandomnessFunction } from './interfaces'
 
 export class ValueNoise extends NoiseMap<number> {
-  constructor(randomnessFunction: RandomnessFunctionInstance, size?: number) {
+  constructor(randomnessFunction: RandomnessFunction, size?: number) {
     super(() => randomnessFunction(), size)
   }
 
