@@ -37,13 +37,33 @@ export const cyrb128: HashFunction<length4Arr> = (seed: string): length4Arr => {
   ]
 }
 
+export function xoshiro128ss(
+  a: number,
+  b: number,
+  c: number,
+  d: number
+): RandomnessFunction {
+  return function (): number {
+    var t = b << 9,
+      r = a * 5
+    r = ((r << 7) | (r >>> 25)) * 9
+    c ^= a
+    d ^= b
+    b ^= c
+    a ^= d
+    c ^= t
+    d = (d << 11) | (d >>> 21)
+    return (r >>> 0) / 4294967296
+  }
+}
+
 export function sfc32(
   a: number,
   b: number,
   c: number,
   d: number
 ): RandomnessFunction {
-  return (): number => {
+  return function (): number {
     a >>>= 0
     b >>>= 0
     c >>>= 0
@@ -59,28 +79,28 @@ export function sfc32(
   }
 }
 
-export function xoshiro128ss(
+export function jsf32(
   a: number,
   b: number,
   c: number,
   d: number
 ): RandomnessFunction {
-  return (): number => {
-    var t = b << 9,
-      r = a * 5
-    r = ((r << 7) | (r >>> 25)) * 9
-    c ^= a
-    d ^= b
-    b ^= c
-    a ^= d
-    c ^= t
-    d = (d << 11) | (d >>> 21)
-    return (r >>> 0) / 4294967296
+  return function (): number {
+    a |= 0
+    b |= 0
+    c |= 0
+    d |= 0
+    var t = (a - ((b << 27) | (b >>> 5))) | 0
+    a = b ^ ((c << 17) | (c >>> 15))
+    b = (c + d) | 0
+    c = (d + t) | 0
+    d = (a + t) | 0
+    return (d >>> 0) / 4294967296
   }
 }
 
 export function getMulberry32(seed: number): RandomnessFunction {
-  return (): number => {
+  return function (): number {
     let t = (seed += 0x6d2b79f5)
     t = Math.imul(t ^ (t >>> 15), t | 1)
     t ^= t + Math.imul(t ^ (t >>> 7), t | 61)
