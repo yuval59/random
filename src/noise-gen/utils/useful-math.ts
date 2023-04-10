@@ -123,3 +123,17 @@ export function lerpCurve(a: number, b: number, amount: number): number {
   const curve = getFadeCurve(amount)
   return a * (1 - curve) + b * curve
 }
+
+export function map_range(
+  value: number,
+  originalLow: number,
+  originalHigh: number,
+  targetLow: number,
+  targetHigh: number
+): number {
+  return (
+    targetLow +
+    ((targetHigh - targetLow) * (value - originalLow)) /
+      (originalHigh - originalLow)
+  )
+}

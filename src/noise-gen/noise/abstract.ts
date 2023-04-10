@@ -1,7 +1,7 @@
 import { ValueFunction } from './interfaces'
 
 export abstract class NoiseMap<mapType> {
-  abstract getValueAt(x: number, y: number): number
+  abstract getValueAt(x: number, y: number, range?: [number, number]): number
 
   #size: number = 255
   #valueMap: mapType[][]

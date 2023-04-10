@@ -1,4 +1,4 @@
-import { lerp } from '../utils/useful-math'
+import { lerp, map_range } from '../utils/useful-math'
 import { NoiseMap } from './abstract'
 import { RandomnessFunction } from './interfaces'
 
@@ -7,7 +7,12 @@ export class ValueNoise extends NoiseMap<number> {
     super(() => randomnessFunction(), size)
   }
 
-  getValueAt(x: number, y: number): number {
+  getValueAt(x: number, y: number, range?: [number, number]): number {
+    if (range) {
+      x = map_range(x, ...range, 0, 1)
+      y = map_range(y, ...range, 0, 1)
+    }
+
     x = x % 1
     y = y % 1
 
