@@ -16,7 +16,7 @@ export const cyrb128: HashFunction<length4Arr> = (seed: string): length4Arr => {
     h3 = 1013904242,
     h4 = 2773480762
 
-  for (let i = 0, k; i < seed.length; i++) {
+  for (let i = 0, k: number; i < seed.length; i++) {
     k = seed.charCodeAt(i)
     h1 = h2 ^ Math.imul(h1 ^ k, 597399067)
     h2 = h3 ^ Math.imul(h2 ^ k, 2869860233)
