@@ -37,6 +37,7 @@ export const cyrb128: HashFunction<length4Arr> = (seed: string): length4Arr => {
   ]
 }
 
+export function xoshiro128ss(...seed: length4Arr): RandomnessFunction
 export function xoshiro128ss(
   a: number,
   b: number,
@@ -57,6 +58,7 @@ export function xoshiro128ss(
   }
 }
 
+export function sfc32(...seed: length4Arr): RandomnessFunction
 export function sfc32(
   a: number,
   b: number,
@@ -79,6 +81,7 @@ export function sfc32(
   }
 }
 
+export function jsf32(...seed: length4Arr): RandomnessFunction
 export function jsf32(
   a: number,
   b: number,
