@@ -7,7 +7,7 @@ import {
 import { getHashedL4PRNG, getMulberry32 } from '../utils/useful-math'
 
 // Noise map constants
-const octaves = 8
+const octaves = 2
 const seed = 256
 // Generation constants
 const width = 500

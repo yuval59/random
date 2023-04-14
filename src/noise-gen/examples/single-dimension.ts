@@ -1,6 +1,10 @@
 import { writeFileSync } from 'fs'
+import {
+  FractionalBrownianMotion,
+  GradientNoise,
+  ValueNoise,
+} from '../noise/noise'
 import { getMulberry32 } from '../utils/useful-math'
-import { getFBM, GradientNoise, ValueNoise } from '../noise/noise'
 
 // Noise map constants
 const octaves = 8
@@ -9,7 +13,7 @@ const seed = 256
 const width = 500
 const stepSize = 0.003
 
-const noiseMap = getFBM(
+const noiseMap = new FractionalBrownianMotion(
   Array.from({ length: octaves }, () => new GradientNoise(getMulberry32(seed)))
 )
 
