@@ -1,31 +1,36 @@
+import linearSieve from './calculators/linear-sieve'
 import naiveCalculator from './calculators/naive'
 import optimizedNaive from './calculators/optimized-naive'
-import optimizedSieveCalc from './calculators/optimized-sieve'
 import sieveOfEratosthenes from './calculators/sieve'
+import { Comparison } from './types'
+import { runComparisons } from './utils/comparisons'
 
-let start: number, stop: number
 const max = 100000
+const min = 0
 
-start = new Date().getTime()
-const naiveApproach = naiveCalculator(max).length
-stop = new Date().getTime()
-console.log(`Naive approach:`)
-console.log(`Found ${naiveApproach} in ${stop - start}ms`)
+const comparisonArr: Comparison[] = [
+  ['Naive approach', naiveCalculator],
+  ['Optimized naive approach', optimizedNaive],
+  ['Basic sieve of Eratosthenes approach', sieveOfEratosthenes],
+  ['Linear sieve of Eratosthenes approach', linearSieve],
+]
 
-start = new Date().getTime()
-const slightlyOptimized = optimizedNaive(max).length
-stop = new Date().getTime()
-console.log(`Optimized naive approach:`)
-console.log(`Found ${slightlyOptimized} in ${stop - start}ms`)
+console.log('--------------')
+console.log(
+  `Starting comparison program for primes up to ${max.toLocaleString()}`
+)
 
-start = new Date().getTime()
-const sieve = sieveOfEratosthenes(max).length
-stop = new Date().getTime()
-console.log(`Basic sieve approach:`)
-console.log(`Found ${sieve} in ${stop - start}ms`)
+const [results, runTime] = min
+  ? runComparisons(comparisonArr, max, min)
+  : runComparisons(comparisonArr, max)
 
-start = new Date().getTime()
-const optimizedSieve = optimizedSieveCalc(max).length
-stop = new Date().getTime()
-console.log(`Optimized sieve approach:`)
-console.log(`Found ${optimizedSieve} in ${stop - start}ms`)
+results.forEach((res) => {
+  const [name, primes, runTime] = res
+  console.log()
+  console.log(`${name}:`)
+  console.log(`Found ${primes} primes in ${runTime}ms`)
+})
+
+console.log()
+console.log(`Finished running in a total of ${runTime}ms`)
+console.log('--------------')
