@@ -1,4 +1,6 @@
-import { PrimeCalculator } from './interfaces'
+export type PrimeChecker = (num: number) => boolean
+
+export type PrimeCalculator = (max: number, min?: number) => number[]
 
 export type Comparison = [name: string, primeFunction: PrimeCalculator]
 

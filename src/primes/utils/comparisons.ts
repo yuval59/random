@@ -1,7 +1,7 @@
-import { PrimeCalculator } from '../interfaces'
 import {
   Comparison,
   ComparisonRunResult,
+  PrimeCalculator,
   PrimeGenerationResult,
 } from '../types'
 
