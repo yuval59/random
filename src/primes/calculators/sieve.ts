@@ -1,7 +1,6 @@
-export default function sieveOfEratosthenes(
-  max: number,
-  min?: number
-): number[] {
+import { PrimeCalculator } from '../types'
+
+const sieveOfEratosthenes: PrimeCalculator = (max: number, min?: number) => {
   if (!min || min < 2) min = 2
 
   let checkList: boolean[] = Array.from({ length: max - min }, () => true)
@@ -19,3 +18,5 @@ export default function sieveOfEratosthenes(
     .map((val, index) => (val ? index + min : 0))
     .filter((val) => val != 0)
 }
+
+export default sieveOfEratosthenes

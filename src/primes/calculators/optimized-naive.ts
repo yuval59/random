@@ -1,6 +1,10 @@
 import optimizedChecker from '../checkers/optimized-basic'
+import { PrimeCalculator } from '../types'
 
-export default function optimizedNaive(max: number, min?: number): number[] {
+const optimizedNaive: PrimeCalculator = (
+  max: number,
+  min?: number
+): number[] => {
   if (!min || min < 2) min = 2
 
   const res: number[] = []
@@ -11,3 +15,5 @@ export default function optimizedNaive(max: number, min?: number): number[] {
 
   return res
 }
+
+export default optimizedNaive

@@ -1,4 +1,6 @@
-export default function linearSieve(max: number, min?: number): number[] {
+import { PrimeCalculator } from '../types'
+
+const linearSieve: PrimeCalculator = (max: number, min?: number): number[] => {
   if (!min || min < 2) min = 2
 
   const foundPrimes: number[] = []
@@ -16,3 +18,5 @@ export default function linearSieve(max: number, min?: number): number[] {
 
   return foundPrimes
 }
+
+export default linearSieve
