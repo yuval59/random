@@ -17,7 +17,7 @@ const sieveOfEratosthenes: PrimeCalculator = (
     // This is needed since we have a minimum!
     if (optimizedChecker(n)) foundPrimes.push(n)
 
-    for (let i = n; i <= max; i *= n) checkList[i - min] = false
+    for (let i = n; i <= max; i += n) checkList[i - min] = false
   }
 
   return foundPrimes
