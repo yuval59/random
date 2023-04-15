@@ -2,14 +2,16 @@ import { naiveApproach, sieveApproach } from './calculators/calculators'
 import { Comparison } from './types'
 import { runComparisons } from './utils/comparisons'
 
-const max = 1128000
-const min = 0
+const max = 5000000
+const min = 4000000
 
 const comparisonArr: Comparison[] = [
   ['Naive approach', naiveApproach.basic],
   ['Optimized naive approach', naiveApproach.optimized],
   ['Basic sieve of Eratosthenes approach', sieveApproach.basic],
   ['Linear sieve of Eratosthenes approach', sieveApproach.linear],
+  ['Clean basic sieve of Eratosthenes approach', sieveApproach.clean.basic],
+  ['Clean linear sieve of Eratosthenes approach', sieveApproach.clean.linear],
 ]
 
 console.log('--------------')
