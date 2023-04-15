@@ -1,17 +1,22 @@
 import fs from 'fs'
-import { getFBM } from '../classes/fBm'
-import { GradientNoise, ValueNoise } from '../classes/noise'
-import { getMulberry32 } from '../useful-math'
+import {
+  FractionalBrownianMotion,
+  GradientNoise,
+  ValueNoise,
+} from '../noise/noise'
+import { getHashedL4PRNG, getMulberry32 } from '../utils/useful-math'
 
 // Noise map constants
-const octaves = 8
+const octaves = 2
 const seed = 256
 // Generation constants
 const width = 500
 const height = 500
 const stepSize = 0.003
 
-const noiseMap = getFBM(GradientNoise, octaves, getMulberry32(seed))
+const noiseMap = new FractionalBrownianMotion(
+  Array.from({ length: octaves }, () => new GradientNoise(getMulberry32(seed)))
+)
 
 const result: number[][] = []
 let max = -999
