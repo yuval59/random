@@ -1,4 +1,4 @@
-import optimizedChecker from '../checkers/optimized-basic'
+import optimizedChecker from '../checkers/optimized'
 import { LOWEST_PRIME } from '../constants'
 import { PrimeCalculator } from '../types'
 

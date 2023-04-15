@@ -1,4 +1,4 @@
-import optimizedChecker from '../checkers/optimized-basic'
+import optimizedChecker from '../checkers/optimized'
 import { PrimeCalculator } from '../types'
 
 const optimizedNaive: PrimeCalculator = (
