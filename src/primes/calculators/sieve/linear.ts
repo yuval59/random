@@ -5,7 +5,10 @@ import { PrimeCalculator } from '../../types'
 const linearSieve: PrimeCalculator = (max: number, min?: number): number[] => {
   if (!min || min < LOWEST_PRIME) min = LOWEST_PRIME
   const foundPrimes: number[] = []
-  const ignoreList: boolean[] = Array.from({ length: max - min }, () => true)
+  const ignoreList: boolean[] = Array.from(
+    { length: max - min + 1 },
+    () => true
+  )
 
   for (let n = min; n <= max; n++) {
     if (ignoreList[n - min] && optimizedChecker(n)) foundPrimes.push(n)
