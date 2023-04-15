@@ -1,22 +1,26 @@
+import optimizedChecker from '../checkers/optimized-basic'
+import { LOWEST_PRIME } from '../constants'
 import { PrimeCalculator } from '../types'
 
-const sieveOfEratosthenes: PrimeCalculator = (max: number, min?: number) => {
-  if (!min || min < 2) min = 2
+const sieveOfEratosthenes: PrimeCalculator = (
+  max: number,
+  min?: number
+): number[] => {
+  if (!min || min < LOWEST_PRIME) min = LOWEST_PRIME
 
-  let checkList: boolean[] = Array.from({ length: max - min }, () => true)
+  const foundPrimes: number[] = []
+  const checkList: boolean[] = Array.from({ length: max - min + 1 }, () => true)
 
-  for (let n = 0; n < max - min; n++) {
-    if (!checkList[n]) continue
+  for (let n = min; n <= max; n++) {
+    if (!checkList[n - min]) continue
 
-    checkList = checkList.map((val, index) => {
-      if (index > n && (index + min) % (n + min) == 0) return false
-      return val
-    })
+    // This is needed since we have a minimum!
+    if (optimizedChecker(n)) foundPrimes.push(n)
+
+    for (let i = n; i <= max; i *= n) checkList[i - min] = false
   }
 
-  return checkList
-    .map((val, index) => (val ? index + min : 0))
-    .filter((val) => val != 0)
+  return foundPrimes
 }
 
 export default sieveOfEratosthenes
