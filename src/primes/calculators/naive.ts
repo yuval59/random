@@ -9,7 +9,7 @@ const naiveCalculator: PrimeCalculator = (
 
   const res: number[] = []
 
-  for (let n = min; n < max; n++) {
+  for (let n = min; n <= max; n++) {
     if (basicChecker(n)) res.push(n)
   }
 
