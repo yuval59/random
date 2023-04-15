@@ -38,15 +38,19 @@ There will be some good code, some less good code, some useful projects and exam
   >
   > Four "[calculators](src/primes/calculators/)" - `functions that receive a range of numbers and return an array of all the primes in the range`:
   >
-  > - [Naive](src/primes/calculators/naive.ts) - Iterates over all the numbers in range, using the [basic checker](src/primes/checkers/basic.ts).
+  > > The [naive approach](src/primes/calculators/naive-approach/) - `iterate over all the numbers in range, and check each one`:
+  > >
+  > > - [Basic](src/primes/calculators/naive-approach/basic.ts) - Iterates over all the numbers in range, using the [basic checker](src/primes/checkers/basic.ts).
+  > >
+  > > - [Optimized](src/primes/calculators/naive-approach/optimized.ts) - Iterates over all the numbers in range, using the [optimized checker](src/primes/checkers/optimized.ts).
   >
-  > - [Optimized-naive](src/primes/calculators/optimized-naive.ts) - Iterates over all the numbers in range, using the [optimized checker](src/primes/checkers/optimized.ts).
-  >
-  > - [Sieve](src/primes/calculators/sieve.ts) - An implementation of the [Sieve of Eratosthenes](https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes) - [More in-depth source](https://cp-algorithms.com/algebra/sieve-of-eratosthenes.html#asymptotic-analysis).
-  >
-  > - [Linear-sieve](src/primes/calculators/linear-sieve.ts) - An implementation of the [Sieve of Eratosthenes](https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes) variation for linear time complexity, as [described here](https://cp-algorithms.com/algebra/prime-sieve-linear.html).
-  >
-  > > Note: The implementations of the sieve algorithm aren't what I'd consider "clean", since they both use a [checker function](src/primes/checkers/) to achieve a minimum cleanly; The other option is to run from 0 and then filter the results.
+  > > The [Sieve of Eratosthenes](https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes) approach:
+  > >
+  > > - [Basic](src/primes/calculators/sieve/basic.ts) - A basic implementation of the sieve algorithm.
+  > >
+  > > - [Linear](src/primes/calculators/sieve/linear.ts) - An implementation of the algorithm with a linear time complexity, as [described here](https://cp-algorithms.com/algebra/prime-sieve-linear.html).
+  > >
+  > > > Note: The implementations of the sieve algorithm aren't what I'd consider "clean", since they both use a [checker function](src/primes/checkers/) to achieve a minimum cleanly; The other option is to run from 0 and then filter the results.
   >
   > A [typing system](src/primes/types.ts) to strongly type everything together - preventing bugs and misuse.
   >

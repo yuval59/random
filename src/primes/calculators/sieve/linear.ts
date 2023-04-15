@@ -1,6 +1,6 @@
-import optimizedChecker from '../checkers/optimized'
-import { LOWEST_PRIME } from '../constants'
-import { PrimeCalculator } from '../types'
+import optimizedChecker from '../../checkers/optimized'
+import { LOWEST_PRIME } from '../../constants'
+import { PrimeCalculator } from '../../types'
 
 const linearSieve: PrimeCalculator = (max: number, min?: number): number[] => {
   if (!min || min < LOWEST_PRIME) min = LOWEST_PRIME
