@@ -5,7 +5,7 @@ import sieveOfEratosthenes from './calculators/sieve'
 import { Comparison } from './types'
 import { runComparisons } from './utils/comparisons'
 
-const max = 100000
+const max = 1128000
 const min = 0
 
 const comparisonArr: Comparison[] = [
@@ -16,20 +16,22 @@ const comparisonArr: Comparison[] = [
 ]
 
 console.log('--------------')
-console.log(
-  `Starting comparison program for primes up to ${max.toLocaleString()}`
-)
+min > 0
+  ? console.log(
+      `Starting comparison program for primes between ${min.toLocaleString()} and ${max.toLocaleString()}`
+    )
+  : console.log(
+      `Starting comparison program for primes up to ${max.toLocaleString()}`
+    )
 
-const [results, runTime] = min
-  ? runComparisons(comparisonArr, max, min)
-  : runComparisons(comparisonArr, max)
+const [results, runTime] = runComparisons(comparisonArr, max, min)
 
-results.forEach((res) => {
+for (const res of results) {
   const [name, primes, runTime] = res
   console.log()
   console.log(`${name}:`)
   console.log(`Found ${primes} primes in ${runTime}ms`)
-})
+}
 
 console.log()
 console.log(`Finished running in a total of ${runTime}ms`)
