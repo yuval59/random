@@ -5,7 +5,7 @@ const naiveCalculator: PrimeCalculator = (
   max: number,
   min?: number
 ): number[] => {
-  if (!min || min < 3) min = 2
+  if (!min || min < 2) min = 2
 
   const res: number[] = []
 
