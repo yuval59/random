@@ -1,8 +1,11 @@
-import optimizedChecker from '../../../checkers/optimized'
 import { LOWEST_PRIME } from '../../../constants'
-import { PrimeCalculator } from '../../../types'
+import { PrimeCalculator, PrimeChecker } from '../../../types'
 
-const linearSieve: PrimeCalculator = (max: number, min?: number): number[] => {
+const linearSieve: PrimeCalculator<true> = (
+  checker: PrimeChecker,
+  max: number,
+  min?: number
+): number[] => {
   if (!min || min < LOWEST_PRIME) min = LOWEST_PRIME
   const foundPrimes: number[] = []
   const ignoreList: boolean[] = Array.from(
@@ -11,7 +14,7 @@ const linearSieve: PrimeCalculator = (max: number, min?: number): number[] => {
   )
 
   for (let n = min; n <= max; n++) {
-    if (ignoreList[n - min] && optimizedChecker(n)) foundPrimes.push(n)
+    if (ignoreList[n - min] && checker(n)) foundPrimes.push(n)
 
     for (const p of foundPrimes) {
       if (n * p > max) break

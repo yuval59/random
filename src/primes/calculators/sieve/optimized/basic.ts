@@ -1,8 +1,8 @@
-import optimizedChecker from '../../../checkers/optimized'
 import { LOWEST_PRIME } from '../../../constants'
-import { PrimeCalculator } from '../../../types'
+import { PrimeCalculator, PrimeChecker } from '../../../types'
 
-const sieveOfEratosthenes: PrimeCalculator = (
+const sieveOfEratosthenes: PrimeCalculator<true> = (
+  checker: PrimeChecker,
   max: number,
   min?: number
 ): number[] => {
@@ -15,7 +15,7 @@ const sieveOfEratosthenes: PrimeCalculator = (
     if (!checkList[n - min]) continue
 
     // This is needed since we have a minimum!
-    if (optimizedChecker(n)) foundPrimes.push(n)
+    if (checker(n)) foundPrimes.push(n)
 
     for (let i = n; i <= max; i += n) checkList[i - min] = false
   }

@@ -1,13 +1,16 @@
-import basicChecker from '../../checkers/basic'
-import { PrimeCalculator } from '../../types'
+import { PrimeCalculator, PrimeChecker } from '../../types'
 
-const basicNaive: PrimeCalculator = (max: number, min?: number): number[] => {
+const basicNaive: PrimeCalculator<true> = (
+  checker: PrimeChecker,
+  max: number,
+  min?: number
+): number[] => {
   if (!min || min < 2) min = 2
 
   const res: number[] = []
 
   for (let n = min; n <= max; n++) {
-    if (basicChecker(n)) res.push(n)
+    if (checker(n)) res.push(n)
   }
 
   return res

@@ -1,7 +1,7 @@
 import { LOWEST_PRIME } from '../../../constants'
 import { PrimeCalculator } from '../../../types'
 
-const cleanLinearSieve: PrimeCalculator = (
+const cleanLinearSieve: PrimeCalculator<false> = (
   max: number,
   min?: number
 ): number[] => {
@@ -9,7 +9,7 @@ const cleanLinearSieve: PrimeCalculator = (
   return cleanFunction(max).filter((val) => val >= min)
 }
 
-const cleanFunction: PrimeCalculator = (max: number): number[] => {
+const cleanFunction: PrimeCalculator<false> = (max: number): number[] => {
   const min = LOWEST_PRIME
   const foundPrimes: number[] = []
   const ignoreList: boolean[] = Array.from(
