@@ -13,8 +13,7 @@ There will be some good code, some less good code, some useful projects and exam
 
 - ### noise-gen:
 
-  > A learning project about Pseudo-random number generation, different types of noise generation, and Fractional Brownian Motion (fBm)
-  > Including:
+  > A learning project about Pseudo-random number generation, different types of noise generation, and Fractional Brownian Motion (fBm) - including:
   >
   > - A complete implementation of a 2-dimensional vector library.
   > - Several different Pseudo-random number generator.
