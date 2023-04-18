@@ -50,18 +50,6 @@ This checks every calculator with every checker function, assuming the calculato
 
 > Currently, all but the [_"clean" sieve implementations_](calculators/sieve/clean/) use checker functions
 
-## TODO:
-
-- Change return values from [**Tuples**](https://www.w3schools.com/typescript/typescript_tuples.php)
-
-  Using Tuples was nice when the project was first starting, but if I wanna expand this more I'm gonna need some better return values (objects please).
-
-  The Tuples are fine and everything, and _some_ things are made more convenient by using them, but the readability of some parts of the code is just awful. (Basically [this entire file](utils/comparisons.ts))
-
-- Change the [calculator type](types.ts#L3)
-
-  I'd like to have a type-safe function implementation, which is why I wrote this in the first place, but having different types of functions and then manually [flagging whether the function uses a checker or not](index.ts#L20) is just the definition of [**DRY**](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)
-
 # Note:
 
 The [_optimized implementation_](calculators/sieve/optimized/) has a big issue!
