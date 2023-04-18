@@ -7,24 +7,22 @@ There will be some good code, some less good code, some useful projects and exam
 
 ## Current projects:
 
-- ### linked-list:
+- ## [linked-list](src/linked-list/)
 
-  > A small, simple implementation of a (very) basic linked list data structure.
+  A small, simple implementation of a (very) basic linked list data structure.
 
-- ### noise-gen:
+- ## [noise-gen](src/noise-gen/)
 
-  > A learning project about Pseudo-random number generation, different types of noise generation, and Fractional Brownian Motion (fBm) - including:
-  >
-  > - A complete implementation of a 2-dimensional vector library.
-  > - Several different Pseudo-random number generator.
-  > - Different hashing functions.
-  > - Different types of noise.
-  > - Fractional Brownian Motion.
-  > - Type-safe implementation rules, for ease and safety of future use.
+  A learning project about Pseudo-random number generation, different types of noise generation, and Fractional Brownian Motion (fBm).
 
-- ### n-dimensions:
+  > [README](src/noise-gen/README.md)
 
-  > A simple implementation of an n-dimensional vector library.
+- ## [n-dimensions](src/n-dimensions/)
 
-- ### primes:
-  > Some learning exercises in different methods of calculating primes and comparisons of methods
+  A simple implementation of an n-dimensional vector library.
+
+- ## [primes](src/primes/)
+
+  Some learning exercises in different methods of calculating primes and comparisons of methods.
+
+  > [README](src/primes/README.md)

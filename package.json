@@ -4,9 +4,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "dev:linked-list": "ts-node src/linked-list/index",
-    "dev:noise-gen": "ts-node src/noise-gen/index",
-    "dev:n-dimensions": "ts-node src/n-dimensions/index",
+    "primes": "ts-node src/primes/index",
     "n-dimensions:convergence": "ts-node src/n-dimensions/examples/convergence",
     "noise-gen-examples:single-dimension": "ts-node src/noise-gen/examples/single-dimension.ts",
     "noise-gen-examples:noise-map": "ts-node src/noise-gen/examples/noise-map.ts"
@@ -22,7 +20,7 @@
     "url": "https://github.com/yuval59/yuvals-stuff/issues"
   },
   "homepage": "https://github.com/yuval59/yuvals-stuff#readme",
-  "description": "",
+  "description": "Just a collection of random semi-useless stuff",
   "devDependencies": {
     "@types/node": "^18.15.3",
     "ts-node": "^10.9.1",
