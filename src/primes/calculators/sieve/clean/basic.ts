@@ -4,12 +4,15 @@ import { UncheckedPrimeCalculator } from '../../../types'
 const cleanSieveOfEratosthenes: UncheckedPrimeCalculator = (
   max: number,
   min?: number
-): number[] => {
+) => {
   if (!min || min < LOWEST_PRIME) min = LOWEST_PRIME
-  return cleanFunction(max).filter((val) => val >= min)
+  return {
+    isUnchecked: true,
+    results: findPrimes(max).filter((val) => val >= min),
+  }
 }
 
-const cleanFunction: UncheckedPrimeCalculator = (max: number): number[] => {
+const findPrimes = (max: number): number[] => {
   const min = LOWEST_PRIME
 
   const foundPrimes: number[] = []

@@ -6,6 +6,7 @@ import {
   PrimeGenerationResult,
   UncheckedPrimeCalculator,
 } from '../types'
+import { isUncheckedCalculator } from './utils'
 
 export function getCalculatorResults(
   calculator: CalculatorComparison,
@@ -15,22 +16,22 @@ export function getCalculatorResults(
 ): PrimeGenerationResult[] {
   const startTime = new Date().getTime()
 
-  const [calculatorName, calculatorFunction, isUnchecked] = calculator
+  const [calculatorName, calculatorFunction] = calculator
 
-  if (isUnchecked)
+  if (isUncheckedCalculator(calculatorFunction))
     return [
-      [
-        [calculatorName], // I'm not sure I like passing in the name just to spit it back out
-        (calculatorFunction as UncheckedPrimeCalculator)(max, min).length,
-        new Date().getTime() - startTime,
-      ],
+      {
+        names: [calculatorName], // I'm not sure I like passing in the name just to spit it back out
+        result: calculatorFunction(max, min).results.length,
+        runTime: new Date().getTime() - startTime,
+      },
     ]
 
-  return checkers.map(([checkerName, checkerFunction]) => [
-    [calculatorName, checkerName], // I'm not sure I like passing in the names just to spit them back out
-    (calculatorFunction as PrimeCalculator)(checkerFunction, max, min).length,
-    new Date().getTime() - startTime,
-  ])
+  return checkers.map(([checkerName, checkerFunction]) => ({
+    names: [calculatorName, checkerName], // I'm not sure I like passing in the names just to spit them back out
+    result: calculatorFunction(checkerFunction, max, min).results.length,
+    runTime: new Date().getTime() - startTime,
+  }))
 }
 
 function unpackGenerationResults(
@@ -63,8 +64,8 @@ export function runComparisons(
   min?: number
 ): ComparisonRunResult {
   const startTime = new Date().getTime()
-  return [
-    getComparisonResults(calculators, checkers, max, min),
-    new Date().getTime() - startTime,
-  ]
+  return {
+    results: getComparisonResults(calculators, checkers, max, min),
+    runTime: new Date().getTime() - startTime,
+  }
 }

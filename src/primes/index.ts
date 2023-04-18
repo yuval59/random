@@ -16,16 +16,8 @@ const calculators: CalculatorComparison[] = [
   ['Naive approach', naiveApproach.basic],
   ['Basic sieve of Eratosthenes approach', sieveApproach.basic],
   ['Linear sieve of Eratosthenes approach', sieveApproach.linear],
-  [
-    'Clean basic sieve of Eratosthenes approach',
-    sieveApproach.clean.basic,
-    true,
-  ],
-  [
-    'Clean linear sieve of Eratosthenes approach',
-    sieveApproach.clean.linear,
-    true,
-  ],
+  ['Clean basic sieve of Eratosthenes approach', sieveApproach.clean.basic],
+  ['Clean linear sieve of Eratosthenes approach', sieveApproach.clean.linear],
 ]
 
 console.log('--------------')
@@ -37,17 +29,21 @@ min > 0
       `Starting comparison program for primes up to ${max.toLocaleString()}`
     )
 
-const [results, runTime] = runComparisons(calculators, checkers, max, min)
+const { results, runTime } = runComparisons(calculators, checkers, max, min)
 
 for (const res of results) {
-  const [[calculatorName, checkerName], primesFound, runTime] = res
+  const {
+    names: [calculatorName, checkerName],
+    result,
+    runTime,
+  } = res
 
   console.log()
   console.log('--------------')
   console.log(
     `${calculatorName}${checkerName ? ` using ${checkerName}:` : ':'}`
   )
-  console.log(`Found ${primesFound} primes in ${runTime}ms`)
+  console.log(`Found ${result} primes in ${runTime}ms`)
 }
 
 console.log()
