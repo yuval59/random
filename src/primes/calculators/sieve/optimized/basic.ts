@@ -1,11 +1,11 @@
 import { LOWEST_PRIME } from '../../../constants'
 import { PrimeCalculator, PrimeChecker } from '../../../types'
 
-const sieveOfEratosthenes: PrimeCalculator<true> = (
+const sieveOfEratosthenes: PrimeCalculator = (
   checker: PrimeChecker,
   max: number,
   min?: number
-): number[] => {
+) => {
   if (!min || min < LOWEST_PRIME) min = LOWEST_PRIME
 
   const foundPrimes: number[] = []
@@ -20,7 +20,9 @@ const sieveOfEratosthenes: PrimeCalculator<true> = (
     for (let i = n; i <= max; i += n) checkList[i - min] = false
   }
 
-  return foundPrimes
+  return {
+    results: foundPrimes,
+  }
 }
 
 export default sieveOfEratosthenes

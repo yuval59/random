@@ -1,10 +1,10 @@
 import { PrimeCalculator, PrimeChecker } from '../../types'
 
-const basicNaive: PrimeCalculator<true> = (
+const basicNaive: PrimeCalculator = (
   checker: PrimeChecker,
   max: number,
   min?: number
-): number[] => {
+) => {
   if (!min || min < 2) min = 2
 
   const res: number[] = []
@@ -13,7 +13,7 @@ const basicNaive: PrimeCalculator<true> = (
     if (checker(n)) res.push(n)
   }
 
-  return res
+  return { results: res }
 }
 
 export default basicNaive

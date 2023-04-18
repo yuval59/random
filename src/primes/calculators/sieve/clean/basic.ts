@@ -1,15 +1,18 @@
 import { LOWEST_PRIME } from '../../../constants'
-import { PrimeCalculator } from '../../../types'
+import { UncheckedPrimeCalculator } from '../../../types'
 
-const cleanSieveOfEratosthenes: PrimeCalculator<false> = (
+const cleanSieveOfEratosthenes: UncheckedPrimeCalculator = (
   max: number,
   min?: number
-): number[] => {
+) => {
   if (!min || min < LOWEST_PRIME) min = LOWEST_PRIME
-  return cleanFunction(max).filter((val) => val >= min)
+  return {
+    isUnchecked: true,
+    results: findPrimes(max).filter((val) => val >= min),
+  }
 }
 
-const cleanFunction: PrimeCalculator<false> = (max: number): number[] => {
+const findPrimes = (max: number): number[] => {
   const min = LOWEST_PRIME
 
   const foundPrimes: number[] = []

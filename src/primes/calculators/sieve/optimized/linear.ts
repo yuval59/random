@@ -1,11 +1,11 @@
 import { LOWEST_PRIME } from '../../../constants'
 import { PrimeCalculator, PrimeChecker } from '../../../types'
 
-const linearSieve: PrimeCalculator<true> = (
+const linearSieve: PrimeCalculator = (
   checker: PrimeChecker,
   max: number,
   min?: number
-): number[] => {
+) => {
   if (!min || min < LOWEST_PRIME) min = LOWEST_PRIME
   const foundPrimes: number[] = []
   const ignoreList: boolean[] = Array.from(
@@ -23,7 +23,9 @@ const linearSieve: PrimeCalculator<true> = (
     }
   }
 
-  return foundPrimes
+  return {
+    results: foundPrimes,
+  }
 }
 
 export default linearSieve
