@@ -1,6 +1,6 @@
 import { PrimeCalculator, PrimeChecker } from '../../types'
 
-const basicNaive: PrimeCalculator<true> = (
+const basicNaive: PrimeCalculator = (
   checker: PrimeChecker,
   max: number,
   min?: number

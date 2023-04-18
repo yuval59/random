@@ -1,20 +1,16 @@
 export type PrimeChecker = (num: number) => boolean
 
-export type PrimeCalculator<IsChecked extends boolean> = IsChecked extends true
-  ? CheckedPrimeCalculator
-  : UncheckedPrimeCalculator
-
-type CheckedPrimeCalculator = (
+export type PrimeCalculator = (
   checkerFunction: PrimeChecker,
   max: number,
   min?: number
 ) => number[]
 
-type UncheckedPrimeCalculator = (max: number, min?: number) => number[]
+export type UncheckedPrimeCalculator = (max: number, min?: number) => number[]
 
 export type CalculatorComparison = [
   name: string,
-  calculatorFunction: PrimeCalculator<any>,
+  calculatorFunction: PrimeCalculator | UncheckedPrimeCalculator,
   isUnchecked?: boolean
 ]
 

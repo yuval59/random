@@ -1,7 +1,7 @@
 import { LOWEST_PRIME } from '../../../constants'
 import { PrimeCalculator, PrimeChecker } from '../../../types'
 
-const linearSieve: PrimeCalculator<true> = (
+const linearSieve: PrimeCalculator = (
   checker: PrimeChecker,
   max: number,
   min?: number
