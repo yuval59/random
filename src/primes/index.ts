@@ -1,17 +1,31 @@
 import { naiveApproach, sieveApproach } from './calculators/calculators'
-import { Comparison } from './types'
+import basicChecker from './checkers/basic'
+import optimizedChecker from './checkers/optimized'
+import { CalculatorComparison, CheckerComparison } from './types'
 import { runComparisons } from './utils/comparisons'
 
-const max = 5000000
-const min = 4000000
+const max = 50000
+const min = 4000
 
-const comparisonArr: Comparison[] = [
+const checkers: CheckerComparison[] = [
+  ['Basic checker', basicChecker],
+  ['Optimized checker', optimizedChecker],
+]
+
+const calculators: CalculatorComparison[] = [
   ['Naive approach', naiveApproach.basic],
-  ['Optimized naive approach', naiveApproach.optimized],
   ['Basic sieve of Eratosthenes approach', sieveApproach.basic],
   ['Linear sieve of Eratosthenes approach', sieveApproach.linear],
-  ['Clean basic sieve of Eratosthenes approach', sieveApproach.clean.basic],
-  ['Clean linear sieve of Eratosthenes approach', sieveApproach.clean.linear],
+  [
+    'Clean basic sieve of Eratosthenes approach',
+    sieveApproach.clean.basic,
+    true,
+  ],
+  [
+    'Clean linear sieve of Eratosthenes approach',
+    sieveApproach.clean.linear,
+    true,
+  ],
 ]
 
 console.log('--------------')
@@ -23,13 +37,17 @@ min > 0
       `Starting comparison program for primes up to ${max.toLocaleString()}`
     )
 
-const [results, runTime] = runComparisons(comparisonArr, max, min)
+const [results, runTime] = runComparisons(calculators, checkers, max, min)
 
 for (const res of results) {
-  const [name, primes, runTime] = res
+  const [[calculatorName, checkerName], primesFound, runTime] = res
+
   console.log()
-  console.log(`${name}:`)
-  console.log(`Found ${primes} primes in ${runTime}ms`)
+  console.log('--------------')
+  console.log(
+    `${calculatorName}${checkerName ? ` using ${checkerName}:` : ':'}`
+  )
+  console.log(`Found ${primesFound} primes in ${runTime}ms`)
 }
 
 console.log()
