@@ -21,13 +21,13 @@ const calculators: CalculatorComparison[] = [
 ]
 
 console.log('--------------')
-min > 0
-  ? console.log(
-      `Starting comparison program for primes between ${min.toLocaleString()} and ${max.toLocaleString()}`
-    )
-  : console.log(
-      `Starting comparison program for primes up to ${max.toLocaleString()}`
-    )
+console.log(
+  `Starting comparison program for primes ${
+    min > 0
+      ? `between ${min.toLocaleString()} and ${max.toLocaleString()}`
+      : `up to ${max.toLocaleString()}`
+  }`
+)
 
 const { results, runTime } = runComparisons(calculators, checkers, max, min)
 
