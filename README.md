@@ -25,4 +25,4 @@ There will be some good code, some less good code, some useful projects and exam
 
   Some learning exercises in different methods of calculating primes and comparisons of methods.
 
-  > [README](src/primes/README.md)
+  > [README](src/primes/README.md) | [TODO](src/primes/TODO.md)
