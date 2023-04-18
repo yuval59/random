@@ -4,6 +4,6 @@
 - [ ] Changing the calculator types
 
   - [x] Removing PrimeCalculator<IsChecked>
-  - [ ] Implementing a check for the calculator function that was passed (possibly using [**this**](https://catchts.com/infer-arguments))
+  - [ ] Implementing a check for the calculator function that was passed
 
     > I can just implement this using two different comparisons, but where's the fun in that?
