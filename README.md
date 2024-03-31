@@ -1,4 +1,4 @@
-# Yuval's stuff
+# Random Projects
 
 A collection of learning exercises and short projects with no better place to go
 
