@@ -4,10 +4,10 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "primes": "ts-node src/primes/index",
-    "n-dimensions:convergence": "ts-node src/n-dimensions/examples/convergence",
-    "noise-gen-examples:single-dimension": "ts-node src/noise-gen/examples/single-dimension.ts",
-    "noise-gen-examples:noise-map": "ts-node src/noise-gen/examples/noise-map.ts"
+    "primes": "ts-node primes/index",
+    "n-dimensions:convergence": "ts-node n-dimensions/examples/convergence",
+    "noise-gen-examples:single-dimension": "ts-node noise-gen/examples/single-dimension.ts",
+    "noise-gen-examples:noise-map": "ts-node noise-gen/examples/noise-map.ts"
   },
   "repository": {
     "type": "git",

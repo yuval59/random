@@ -106,3 +106,4 @@ image.json
 
 # Processing noise visualizer
 processing-noise-vis/
+**/examples/data/
