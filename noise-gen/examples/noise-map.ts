@@ -1,10 +1,6 @@
-import fs from 'fs'
-import {
-  FractionalBrownianMotion,
-  GradientNoise,
-  ValueNoise,
-} from '../noise/noise'
-import { getHashedL4PRNG, getMulberry32 } from '../utils/useful-math'
+import { FractionalBrownianMotion, GradientNoise, ValueNoise } from '../noise'
+import { getHashedL4PRNG, getMulberry32 } from '../utils'
+import { writeData } from './write'
 
 // Noise map constants
 const octaves = 2
@@ -35,9 +31,4 @@ for (let x = 0; x < width; x++) {
   result.push(newColumn)
 }
 
-fs.writeFileSync(
-  'processing-noise-vis/data/noise-map.json',
-  JSON.stringify({ min, max, data: result })
-)
-console.log('Finished writing value JSON')
-console.log(`Min was ${min} and max was ${max}`)
+writeData('noise-map.json', { min, max, result })
