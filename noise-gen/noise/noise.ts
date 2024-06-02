@@ -1,13 +1,15 @@
-import { ValueFunction } from './interfaces'
+type ValueFunction<valueType> = {
+  (): valueType
+}
 
-export abstract class NoiseMap<mapType> {
+export abstract class NoiseMapAbstract<mapType> {
   abstract getValueAt(x: number, y: number, range?: [number, number]): number
 
-  #size: number = 255
+  #size: number
   #valueMap: mapType[][]
 
   constructor(valueFunction: ValueFunction<mapType>, size?: number) {
-    if (size) this.#size = size
+    this.#size = size || 255
 
     this.#valueMap = Array.from({ length: this.Size }, () =>
       this.#makeInsideArr(valueFunction)

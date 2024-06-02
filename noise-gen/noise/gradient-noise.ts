@@ -1,17 +1,15 @@
-import { lerpCurve, map_range } from '../utils/useful-math'
-import { Vector2 } from '../utils/vector'
-import { RandomnessFunction } from './interfaces'
-import { NoiseMap } from './noise'
+import { RandomnessFunction, Vector2, lerpCurve, mapRange } from '../'
+import { NoiseMapAbstract } from './noise'
 
-export class GradientNoise extends NoiseMap<Vector2> {
+export class GradientNoise extends NoiseMapAbstract<Vector2> {
   constructor(randomnessFunction: RandomnessFunction, size?: number) {
     super(() => Vector2.random(randomnessFunction), size)
   }
 
   getValueAt(x: number, y: number, range?: [number, number]): number {
     if (range) {
-      x = map_range(x, ...range, 0, 1)
-      y = map_range(y, ...range, 0, 1)
+      x = mapRange(x, ...range, 0, 1)
+      y = mapRange(y, ...range, 0, 1)
     }
 
     x = x % 1

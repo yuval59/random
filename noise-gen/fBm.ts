@@ -1,4 +1,4 @@
-import { NoiseMap } from './noise'
+import { NoiseMapAbstract } from './noise/noise'
 
 export class FractionalBrownianMotion {
   #startingXFrequency: number
@@ -7,10 +7,13 @@ export class FractionalBrownianMotion {
   #lacunarity: number
   #gain: number
 
-  #noiseMaps: NoiseMap<unknown>[]
+  // I'm not sure how to tell the TypeScript transpiler all unknowns in the array have to be of the same type.
+  // This could create a consumption issue
+  // Watch out and good luck
+  #noiseMaps: NoiseMapAbstract<unknown>[]
 
   constructor(
-    noiseMaps: NoiseMap<unknown>[],
+    noiseMaps: NoiseMapAbstract<unknown>[],
     startingXFrequency: number = 0.01,
     startingYFrequency: number = 0.01,
     amplitude: number = 0.05,

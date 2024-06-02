@@ -1,5 +1,9 @@
-import { FractionalBrownianMotion, GradientNoise, ValueNoise } from '../noise'
-import { getMulberry32 } from '../utils'
+import {
+  FractionalBrownianMotion,
+  GradientNoise,
+  ValueNoise,
+  getMulberry32,
+} from '../'
 import { writeData } from './write'
 
 // Noise map constants

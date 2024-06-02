@@ -1,5 +1,10 @@
-import { FractionalBrownianMotion, GradientNoise, ValueNoise } from '../noise'
-import { getHashedL4PRNG, getMulberry32 } from '../utils'
+import {
+  FractionalBrownianMotion,
+  GradientNoise,
+  ValueNoise,
+  getHashedL4PRNG,
+  getMulberry32,
+} from '../'
 import { writeData } from './write'
 
 // Noise map constants
@@ -28,6 +33,7 @@ for (let x = 0; x < width; x++) {
 
     newColumn.push(val)
   }
+
   result.push(newColumn)
 }
 
