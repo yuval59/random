@@ -1,4 +1,4 @@
-import { NoiseMap } from './abstract'
+import { NoiseMap } from './noise'
 
 export class FractionalBrownianMotion {
   #startingXFrequency: number

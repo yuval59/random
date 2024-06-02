@@ -1,6 +1,6 @@
 import { lerp, map_range } from '../utils/useful-math'
-import { NoiseMap } from './abstract'
 import { RandomnessFunction } from './interfaces'
+import { NoiseMap } from './noise'
 
 export class ValueNoise extends NoiseMap<number> {
   constructor(randomnessFunction: RandomnessFunction, size?: number) {
