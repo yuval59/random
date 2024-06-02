@@ -27,7 +27,7 @@ export class Vector2 {
   }
   //#endregion
 
-  //#region Vector math
+  //#region Vector mat
   rotate(angle: number): void {
     const newAngle = this.Angle + angle
 
@@ -148,7 +148,7 @@ export class Vector2 {
     const angle =
       (randomnessFunction ? randomnessFunction() : Math.random()) * Math.PI * 2
 
-    return this.fromAngle(angle, magnitude | 1)
+    return this.fromAngle(angle, magnitude || 1)
   }
 
   static rotate(vectorA: Vector2, angle: number): Vector2 {
